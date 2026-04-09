@@ -1,1 +1,138 @@
-# instagram.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(270deg, #ff6b6b, #6bffb8, #6b8bff);
+    background-size: 600% 600%;
+    animation: bgMove 12s ease infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+.logo {
+    width: 60px;
+}
+
+.card {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 250px;
+}
+
+.profile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: #00acee;
+}
+
+/* Shiny text effect */
+.shiny-text {
+    position: relative;
+    display: inline-block;
+    color: #00acee;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.shiny-text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    transform: skewX(-35deg);
+}
+
+.shiny-text.clicked::after {
+    animation: shine 0.6s ease forwards;
+}
+
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Custom Instagram logo (Base64) -->
+    <img class="logo" src="https://i.ibb.co/twYm7Yn5/intrs.webp" alt="Instagram Logo">
+
+    <!-- Profile card -->
+    <div class="card">
+
+        <!-- CLICKABLE PFP -->
+        <a href="https://www.instagram.com/japan__jeden__offical__17/" class="shiny-text" onclick="delayedLink(event)">
+            <img class="profile" src="https://i.ibb.co/7x3qmyRF/JPYN.webp" alt="Profile Picture">
+        </a>
+
+        <h3 class="shiny-text" onclick="delayedLink(event)">
+            @japan__jeden__offical__17
+        </h3>
+
+        <p>RACIST</p>
+
+        <a href="https://www.instagram.com/japan__jeden__offical__17/" class="shiny-text" onclick="delayedLink(event)">
+            Open Instagram
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+function delayedLink(event) {
+    event.preventDefault(); // stop immediate navigation
+    const link = event.currentTarget.href || "https://www.instagram.com/japan__jeden__offical__17/";
+    
+    // add shine animation immediately
+    event.currentTarget.classList.add('clicked');
+
+    // delay 3 seconds before opening Instagram
+    setTimeout(() => {
+        window.open(link, '_blank');
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
